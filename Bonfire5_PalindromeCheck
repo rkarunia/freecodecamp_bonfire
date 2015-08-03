@@ -1,0 +1,21 @@
+function palindrome(str) {
+  // Good luck!
+  // Strip all non alpha numeric characters and spaces
+  var pstr = str.replace(/[^a-z0-9]+|\s+/gmi, "").toLowerCase();
+  var i,j;
+  //var pstr = str.replace(/[\W_]+/gmi, "");
+  for (i=0, j=pstr.length-1; i<pstr.length/2; i++, j--) {
+    if (pstr[i] != pstr[j]) {
+      return false;
+    }      
+  }
+  return true;
+}
+// Test case:
+//expect(palindrome("eye")).to.be.a("boolean");
+//assert.deepEqual(palindrome("eye"), true);
+//assert.deepEqual(palindrome("race car"), true);
+//assert.deepEqual(palindrome("not a palindrome"), false);
+//assert.deepEqual(palindrome("A man, a plan, a canal. Panama"), true);
+//assert.deepEqual(palindrome("never odd or even"), true);
+//assert.deepEqual(palindrome("nope"), false);
