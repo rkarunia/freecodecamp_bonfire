@@ -1,0 +1,13 @@
+function reverseString(str) {
+  var strreversed = [];
+  var j = str.length - 1;
+  for (var i=0; i<str.length; ++i) {
+    strreversed[i] = str[j];
+    j--;
+  }
+  return strreversed.join("");
+}
+
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
