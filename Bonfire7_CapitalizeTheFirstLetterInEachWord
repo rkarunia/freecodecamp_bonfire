@@ -8,6 +8,17 @@ function titleCase(str) {
   }
   return titleStr;
 }
+
+// Alternate method:
+function titleCase(str) {
+  var strarray = str.split(" ");
+  var titleStr = [];
+  for (var i=0; i<strarray.length; i++) {
+    titleStr[i] = (strarray[i].charAt(0).toUpperCase() + strarray[i].substring(1).toLowerCase());
+  }
+  return titleStr.join(" ");
+}
+
 // Test cases:
 //expect(titleCase("I'm a little tea pot")).to.be.a('String');
 //expect(titleCase("I'm a little tea pot")).to.equal("I'm A Little Tea Pot");
