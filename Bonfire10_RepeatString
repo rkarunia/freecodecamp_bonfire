@@ -1,0 +1,16 @@
+function repeat(str, num) {
+  // repeat after me
+  if (num < 0) {
+    return ("");
+  }
+  var strmultiple = "";
+  for (var i=0; i<num; ++i) {
+    strmultiple += str;
+  }
+  return strmultiple;
+}
+
+// Test cases
+//assert.strictEqual(repeat('*', 3), '***', 'should repeat a string n times');
+//assert.strictEqual(repeat('abc', 3), 'abcabcabc', 'should repeat a string n times');
+//assert.strictEqual(repeat('abc', -2), '', 'should return an empty string for negative numbers');
