@@ -1,0 +1,23 @@
+//Remove all falsey values from an array.
+//
+//Falsey values in javascript are false, null, 0, "", undefined, and NaN.
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Boolean Objects
+//Array.filter()
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  var filterFalsey = function(val) {
+    return Boolean(val);
+  };
+  return arr.filter(filterFalsey);
+}
+
+// Test cases
+//assert.deepEqual(bouncer([7, 'ate', '', false, 9]), [7, 'ate', 9], 'should remove falsey values');
+//assert.deepEqual(bouncer(['a', 'b', 'c']), ['a', 'b', 'c'], 'should return full array if no falsey elements');
+//assert.deepEqual(bouncer([false, null, 0]), [], 'should return empty array if all elements are falsey');
