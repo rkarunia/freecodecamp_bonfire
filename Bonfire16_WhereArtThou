@@ -1,0 +1,30 @@
+//Make a function that looks through a list (first argument) and returns an array of all objects that have equivalent property values (second argument).
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Global Object
+//Object.hasOwnProperty()
+//Object.keys()
+
+function where(collection, source) {
+  var arr = [];
+  var keys = Object.keys(source);
+  for (var i=0; i<collection.length; i++) {
+    var obj = collection[i];
+    for (var j=0; j<keys.length; j++) {
+      if (obj.hasOwnProperty(keys[j])) {
+        if (obj[keys[j]] === source[keys[j]]) {
+          arr.push(obj);
+        }
+      }
+    }
+  }
+  return arr;
+}
+
+//Test cases:
+//where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' });
+//assert.deepEqual(where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' }), [{ first: 'Tybalt', last: 'Capulet' }], 'should return an array of objects');
+//assert.deepEqual(where([{ 'a': 1 }, { 'a': 1 }, { 'a': 1, 'b': 2 }], { 'a': 1 }), [{ 'a': 1 }, { 'a': 1 }, { 'a': 1, 'b': 2 }], 'should return with multiples');
