@@ -1,0 +1,18 @@
+function sumAll(arr) {
+  assert(arr.length === 2);
+  var sum = 0;
+  var start, end;
+  if (arr[0] > arr[1]) {
+    start = arr[1];
+    end = arr[0];
+  } else {
+    start = arr[0];
+    end = arr[1];    
+  }
+  for (var i=start; i<=end; ++i) {
+    sum += i;
+  }
+  return(sum);
+}
+
+sumAll([1, 4]);
