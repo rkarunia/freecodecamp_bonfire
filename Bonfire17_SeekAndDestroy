@@ -1,0 +1,31 @@
+//You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Arguments object
+//Array.filter()
+
+function destroyer(arr) {
+  // Remove all the values
+  var args = [];
+  for (var i=0; i<arguments.length; i++) {
+    args.push(arguments[i]);
+  }
+  function contains(value) {
+    for (var i=1; i<args.length; i++) {
+      if (value == args[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+  var arr1 = args[0].filter(contains);
+  return arr1;
+}
+
+//Test cases
+//destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+//assert.deepEqual(destroyer([1, 2, 3, 1, 2, 3], 2, 3), [1, 1], 'should remove correct values from an array');
+//assert.deepEqual(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3), [1, 5, 1], 'should remove correct values from an array');
