@@ -1,3 +1,15 @@
+//We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
+//
+//The lowest number will not always come first.
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Math.max()
+//Math.min()
+//Array.reduce()
+
 function sumAll(arr) {
   assert(arr.length === 2);
   var sum = 0;
@@ -14,5 +26,29 @@ function sumAll(arr) {
   }
   return(sum);
 }
+/*
+// Alternate
+function sumAll(arr) {
+  assert(arr.length === 2);
+  var list = [];
+  var start = Math.min(arr[0], arr[1]);
+  var end = Math.max(arr[0], arr[1]);
 
-sumAll([1, 4]);
+  for (var i = start; i <= end; i++) {
+    list.push(i);
+  }
+  var sum = list.reduce(function(a, b) {
+    return a + b;
+  });
+  return sum;
+}
+*/
+
+//Test cases
+//sumAll([1, 4]);
+//assert(arr.length === 2);
+//expect(sumAll([1, 4])).to.be.a('Number');
+//expect(sumAll([1, 4])).to.equal(10);
+//expect(sumAll([4, 1])).to.equal(10);
+//expect(sumAll([5, 10])).to.equal(45);
+//expect(sumAll([10, 5])).to.equal(45);
