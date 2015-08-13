@@ -1,0 +1,94 @@
+//Convert the given number into a roman numeral.
+//
+//All roman numerals answers should be provided in upper-case.
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Array.splice()
+//Array.indexOf()
+//Array.join()
+
+function convert(num) {
+  var numStr = num.toString().split("").reverse();
+  var romanStr = "";
+  var romanForSingle = function (value) {
+    var romanStr = "";
+    if ((value <= 0) || (value > 9)) {
+      return romanStr;
+    }
+    for (var i=1; i<=value; ++i) {
+      romanStr += "I";
+      if (i==5) {
+        romanStr = "V";
+      }
+      if (i==4) {
+        romanStr = "IV";
+      }
+      if (i==9) {
+        romanStr = "IX";
+      }
+    }
+    return romanStr;
+  };
+  var romanForTens = function (value) {
+    var romanStr = "";
+    if ((value <= 0) || (value > 9)) {
+      return romanStr;
+    }
+    for (var i=1; i<=value; ++i) {
+      romanStr += "X";
+      if (i==5) {
+        romanStr = "L";
+      }
+      if (i==4) {
+        romanStr = "XL";
+      }
+      if (i==9) {
+        romanStr = "XC";
+      }
+    }
+    return romanStr;
+  };  
+  var romanForHundreds = function (value) {
+    var romanStr = "";
+    if ((value <= 0) || (value > 9)) {
+      return romanStr;
+    }
+    for (var i=1; i<=value; ++i) {
+      romanStr += "C";
+      if (i==5) {
+        romanStr = "D";
+      }
+      if (i==4) {
+        romanStr = "CD";
+      }
+      if (i==9) {
+        romanStr = "CM";
+      }
+    }
+    return romanStr;
+  };
+  for (var i=0; i<numStr.length; ++i) {
+    if (i===0) {
+      romanStr += romanForSingle(parseInt(numStr[i]));
+    }
+    if (i===1) {
+      romanStr = romanForTens(parseInt(numStr[i])) + romanStr;
+    }
+    if (i===2) {
+      romanStr = romanForHundreds(parseInt(numStr[i])) + romanStr;
+    }
+  }
+  
+ return romanStr;
+}
+
+// Test cases
+//convert(36);
+//expect(convert(12)).to.equal("XII");
+//expect(convert(5)).to.equal("V");
+//expect(convert(9)).to.equal("IX");
+//expect(convert(29)).to.equal("XXIX");
+//expect(convert(16)).to.equal("XVI");
