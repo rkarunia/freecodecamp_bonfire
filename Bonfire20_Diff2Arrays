@@ -1,0 +1,48 @@
+//Compare two arrays and return a new array with any items not found in both of the original arrays.
+//
+//Remember to use RSAP if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//Comparison Operators
+//String.slice()
+//Array.filter()
+//Array.indexOf()
+//String.concat()
+
+function diff(arr1, arr2) {
+  var newArr = [];
+  // Same, same; but different.
+  var filterarr1 = function(value) {
+    if (arr1.indexOf(value) != -1) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  };
+  var filterarr2 = function(value) {
+    if (arr2.indexOf(value) != -1) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  };
+  
+  var filter1 = arr1.filter(filterarr2);
+  var filter2 = arr2.filter(filterarr1);
+  
+  return filter2.concat(filter1);
+}
+
+//Test cases
+//diff([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+//expect(diff([1, 2, 3, 5], [1, 2, 3, 4, 5])).to.be.a('array');
+//assert.deepEqual(diff(['diorite', 'andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']), ['pink wool'], 'arrays with only one difference');
+//assert.includeMembers(diff(['andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']), ['diorite', 'pink wool'], 'arrays with more than one difference');
+//assert.deepEqual(diff(['andesite', 'grass', 'dirt', 'dead shrub'], ['andesite', 'grass', 'dirt', 'dead shrub']), [], 'arrays with no difference');
+//assert.deepEqual(diff([1, 2, 3, 5], [1, 2, 3, 4, 5]), [4], 'arrays with numbers');
+//assert.includeMembers(diff([1, 'calf', 3, 'piglet'], [1, 'calf', 3, 4]), ['piglet', 4], 'arrays with numbers and strings');
+//assert.deepEqual(diff([], ['snuffleupagus', 'cookie monster', 'elmo']), ['snuffleupagus', 'cookie monster', 'elmo'], 'empty array');
+
