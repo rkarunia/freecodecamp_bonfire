@@ -1,0 +1,40 @@
+//Bonfire: Missing letters
+//Difficulty:**
+//Find the missing letter in the passed letter range and return it.
+//
+//If all letters are present in the range, return undefined.
+//
+//Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//String.charCodeAt()
+//String.fromCharCode()
+
+function fearNotLetter(str) {
+  if (!str.length) {
+    return undefined;
+  }
+  
+  var start = str.charCodeAt(0);
+  var end = str.charCodeAt(str.length-1);
+ 
+  if (start<65 || (start>90 && start<97) || start>122) {
+    return undefined;
+  }
+  
+  for (var i = 1; i < (end-start); ++i) {
+    if(str.charCodeAt(i) != (start+i)) {
+      return String.fromCharCode(start+i);   
+    }
+  }
+ 
+  return undefined;
+}
+
+// Test cases
+//fearNotLetter('abce');
+//expect(fearNotLetter('abce')).to.equal('d');
+//expect(fearNotLetter('bcd')).to.be.undefined;
+//expect(fearNotLetter('abcdefghjklmno')).to.equal('i');
+//expect(fearNotLetter('yz')).to.be.undefined;
