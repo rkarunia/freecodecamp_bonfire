@@ -1,0 +1,41 @@
+//Bonfire: Convert HTML Entities
+//Difficulty: 
+//Convert the characters "&", "<", ">", '"' (double quote), and "'" (apostrophe), in a string to their corresponding HTML entities.
+//
+//Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+//
+//Here are some helpful links:
+//
+//RegExp
+//HTML Entities
+
+function convert(str) {
+  
+  var charCode = {
+    "&"  : "&(amp|AMP|#x00026|#38);",
+    "<"  : "&(lt|LT|#x0003C|#60);",
+    ">"  : "&(gt|GT|#x0003E|#62);",
+    "\"" : "&(quot|QUOT|#x00022|#34);",
+    "'"  : "&(apos|#x00027|#39);"
+  };
+  
+  var encodedStr = str.replace(/[&<>\'"]/g, function(i) {
+   return charCode[i];
+  });
+  
+  if (encodedStr === str) {
+    return str;
+  }
+  
+  return RegExp(encodedStr);
+}
+
+// Test
+//convert('Dolce & Gabbana');
+//assert.match(convert('Dolce & Gabbana'), /Dolce &(amp|AMP|#x00026|#38); Gabbana/, 'should escape characters');should escape characters: expected /Dolce &(amp|AMP|#x00026|#38); Gabbana/ to match /Dolce &(amp|AMP|#x00026|#38); Gabbana/
+//assert.match(convert('Hamburgers < Pizza < Tacos'), /Hamburgers &(lt|LT|#x0003C|#60); Pizza &(lt|LT|#x0003C|#60); Tacos/, 'should escape characters');should escape characters: expected /Hamburgers &(lt|LT|#x0003C|#60); Pizza &(lt|LT|#x0003C|#60); Tacos/ to match /Hamburgers &(lt|LT|#x0003C|#60); Pizza &(lt|LT|#x0003C|#60); Tacos/
+//assert.match(convert('Sixty > twelve'), /Sixty &(gt|GT|#x0003E|#62); twelve/, 'should escape characters');should escape characters: expected /Sixty &(gt|GT|#x0003E|#62); twelve/ to match /Sixty &(gt|GT|#x0003E|#62); twelve/
+//assert.match(convert('Stuff in "quotation marks"'), /Stuff in &(quot|QUOT|#x00022|#34);quotation marks&(quot|QUOT|#x00022|#34);/, 'should escape characters');should escape characters: expected /Stuff in &(quot|QUOT|#x00022|#34);quotation marks&(quot|QUOT|#x00022|#34);/ to match /Stuff in &(quot|QUOT|#x00022|#34);quotation marks&(quot|QUOT|#x00022|#34);/
+//assert.match(convert("Shindler's List"), /Shindler&(apos|#x00027|#39);s List/, 'should escape characters');should escape characters: expected /Shindler&(apos|#x00027|#39);s List/ to match /Shindler&(apos|#x00027|#39);s List/
+//assert.match(convert('<>'), /&(lt|LT|#x0003C|#60);&(gt|GT|#x0003E|#62);/, 'should escape characters');should escape characters: expected /&(lt|LT|#x0003C|#60);&(gt|GT|#x0003E|#62);/ to match /&(lt|LT|#x0003C|#60);&(gt|GT|#x0003E|#62);/
+//assert.strictEqual(convert('abc'), 'abc', 'should handle strings with nothing to escape');
