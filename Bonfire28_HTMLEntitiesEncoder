@@ -11,24 +11,17 @@
 
 function convert(str) {
   
-  var charCode = {
-    "&"  : "&(amp|AMP|#x00026|#38);",
-    "<"  : "&(lt|LT|#x0003C|#60);",
-    ">"  : "&(gt|GT|#x0003E|#62);",
-    "\"" : "&(quot|QUOT|#x00022|#34);",
-    "'"  : "&(apos|#x00027|#39);"
-  };
-  
-  var encodedStr = str.replace(/[&<>\'"]/g, function(i) {
-   return charCode[i];
+  var encodedStr = str.replace(/[&<>"']/gm, function(i) {
+   return "&#" + i.charCodeAt(0) + ";";
   });
   
   if (encodedStr === str) {
     return str;
   }
   
-  return RegExp(encodedStr);
+  return "/"+encodedStr+"/";
 }
+
 
 // Test
 //convert('Dolce & Gabbana');
