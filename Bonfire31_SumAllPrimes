@@ -1,0 +1,51 @@
+/*
+Bonfire: Sum All Primes
+Difficulty: 
+Sum all the prime numbers up to and including the provided number.
+
+A prime number is defined as having only two divisors, 1 and itself. For example, 2 is a prime number because it's only divisible by 1 and 2. 1 isn't a prime number, because it's only divisible by itself.
+
+The provided number may not be a prime.
+
+Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+
+Here are some helpful links:
+
+For Loops
+Array.push()
+*/
+
+function sumPrimes(num) {
+  var primes = [];
+  var sum = 0;
+  primes[0] = false;
+  primes[1] = false;
+  // Build the array with all numbers marked as prime
+  for(var i = 2; i <= num; i++) {
+    primes[i] = true;
+  }
+  // Only loop upto the sqrt of num
+  var limit = Math.ceil(Math.sqrt(num));
+  for(var i = 2; i <= limit; i++) {
+    if(primes[i] === true) {
+      for(var j = i * i; j <= num; j += i) {
+        primes[j] = false;
+      }
+    }
+  }
+  // Loop through the array again, sum the primes
+  for(var i = 2; i <= num; i++) {
+    if(primes[i] === true) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+
+/*
+Test
+sumPrimes(10);
+expect(sumPrimes(10)).to.be.a('number');
+expect(sumPrimes(10)).to.equal(17);
+expect(sumPrimes(977)).to.equal(73156);
+*/
